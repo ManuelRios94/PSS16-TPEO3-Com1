@@ -79,6 +79,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 		int price = 0;
 		int year = 0;
 		boolean valid = false;
+		Icon imagen = null;
 		try
 		{
 			/* retrieve all the values from the text field, and convert them into an appropriate
@@ -89,6 +90,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			kilometers = Double.parseDouble(carComponents.getKmText().trim());
 			price = Integer.parseInt(carComponents.getPriceText().trim());
 			year = Integer.parseInt(carComponents.getYearText().trim());
+			imagen = carComponents.getImagen();
 
 			// begin validation process
 			if (validateString(manufacturer))
@@ -129,6 +131,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			myCar.setKilometers(kilometers);
 			myCar.setPrice(price);
 			myCar.setYear(year);
+			myCar.setImagen(imagen);
 
 			// attempt to add the new car to the system.
 			int result = carSystem.addNewCar(myCar);
