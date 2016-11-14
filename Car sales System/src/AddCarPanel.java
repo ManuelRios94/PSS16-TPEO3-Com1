@@ -78,6 +78,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 		double kilometers = 0;
 		int price = 0;
 		int year = 0;
+		String lastService = "";
 		boolean valid = false;
 		try
 		{
@@ -89,6 +90,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			kilometers = Double.parseDouble(carComponents.getKmText().trim());
 			price = Integer.parseInt(carComponents.getPriceText().trim());
 			year = Integer.parseInt(carComponents.getYearText().trim());
+			lastService = carComponents.getLastServiceText();
 
 			// begin validation process
 			if (validateString(manufacturer))
@@ -129,6 +131,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			myCar.setKilometers(kilometers);
 			myCar.setPrice(price);
 			myCar.setYear(year);
+			myCar.setLastService(lastService);
 
 			// attempt to add the new car to the system.
 			int result = carSystem.addNewCar(myCar);

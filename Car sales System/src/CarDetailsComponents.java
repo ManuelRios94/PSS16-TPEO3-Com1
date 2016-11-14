@@ -39,11 +39,13 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 	private JLabel priceLabel = new JLabel("Price");
 	private JLabel kmLabel = new JLabel("Km Traveled");
 	private JLabel infoLabel = new JLabel("Extra Information");
+	private JLabel lastServiceLabel = new JLabel("Date of Last Service");
 	private JTextField manufacturerTextField = new JTextField();
 	private JTextField yearTextField = new JTextField();
 	private JTextField modelTextField = new JTextField();
 	private JTextField priceTextField = new JTextField();
 	private JTextField kmTextField = new JTextField();
+	private JTextField lastServiceTextField = new JTextField();
 	private JTextArea infoTextArea = new JTextArea(4, 0);
 
 	private final int divFactor = 27;
@@ -106,6 +108,14 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
         gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.insets = currentInsets;
         compPanel.add(infoLabel, gridBagConstraints);
+        
+        lastServiceLabel.setFont(new Font(currentFont, Font.BOLD, 12));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
+        gridBagConstraints.insets = currentInsets;
+        compPanel.add(lastServiceLabel, gridBagConstraints);
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridwidth = GridBagConstraints.RELATIVE;
@@ -153,7 +163,15 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
         gridBagConstraints.anchor = gridBagConstraints.WEST;
 		gridBagConstraints.weightx = 1.0;
         compPanel.add(new JScrollPane(infoTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), gridBagConstraints);
-
+        
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = GridBagConstraints.RELATIVE;
+		gridBagConstraints.anchor = gridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+		compPanel.add(lastServiceTextField, gridBagConstraints);
+		
 		// this listens for resize events
 		addComponentListener(this);
         add(compPanel, "North");
@@ -170,6 +188,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		priceTextField.setText("");
 		kmTextField.setText("");
 		infoTextArea.setText("");
+		lastServiceTextField.setText("");
 	}
 
 	public void componentHidden(ComponentEvent ev) {}
@@ -196,6 +215,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 				modelTextField.setColumns(width / divFactor);
 				priceTextField.setColumns(width / divFactor);
 				kmTextField.setColumns(width / divFactor);
+				lastServiceTextField.setColumns( width / divFactor);
 				infoTextArea.setColumns((width / divFactor) + 3); // this text box is larger
 			}
 		}
@@ -216,6 +236,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		priceTextField.setText(Integer.toString(c.getPrice()));
 		kmTextField.setText(Double.toString(c.getKilometers()));
 		infoTextArea.setText(c.getInformation());
+		lastServiceTextField.setText(c.getLastService());
 	}
 
 	public String getInfoText()
@@ -247,7 +268,11 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 	{
 		return yearTextField.getText();
 	}
-
+	
+	public String getLastServiceText()
+	{
+		return lastServiceTextField.getText();
+	}
 	/**
 	 * set focus to the manufacturer text field. ie, put the cursor inside it
 	 */
