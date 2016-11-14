@@ -83,13 +83,13 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 	private JPanel titlePanel = new JPanel(new GridLayout(2, 1));
 	private JLabel statusLabel = new JLabel();
 	private JLabel pictureLabel = new JLabel();
-	private JLabel carCoLabel = new JLabel("My Car Company", JLabel.CENTER);
-	private JLabel salesSysLabel = new JLabel("Car Sales System", JLabel.CENTER);
+	private JLabel carCoLabel = new JLabel("Mi Compañia de Autos", JLabel.CENTER);
+	private JLabel salesSysLabel = new JLabel("Sistema de Venta de Autos", JLabel.CENTER);
 	private JTabbedPane theTab = new JTabbedPane(JTabbedPane.LEFT);
 	private JMenuBar menuBar = new JMenuBar();
-	private JMenu fileMenu = new JMenu("File");
-	private JMenuItem aboutItem = new JMenuItem("About");
-	private JMenuItem exitItem = new JMenuItem("Exit");
+	private JMenu fileMenu = new JMenu("Archivo");
+	private JMenuItem aboutItem = new JMenuItem("Sobre");
+	private JMenuItem exitItem = new JMenuItem("Salida");
 	private WindowCloser closer = new WindowCloser();
 
 	/**
@@ -97,7 +97,7 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 	 */
 	public CarSalesSystem(String f)
 	{
-		super("Car Sales");
+		super("Venta de Autos");
 
 		addWindowListener(closer);
 		addComponentListener(this);
@@ -116,19 +116,19 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 		}
 		catch (java.io.FileNotFoundException exp)
 		{
-			System.out.println("The data file, 'cars.dat' doesn't exist. Plase create an empty file named 'cars.dat'");
+			System.out.println("El archivo de dato, 'cars.dat' no existe. Por favor crear un archivo vacio llamado 'cars.dat'");
 			System.exit(0);
 		}
 		// empty cars.dat file, this error should be ignored
 		catch (java.io.EOFException exp){}
 		catch (java.io.IOException exp)
 		{
-			System.out.println("The data file, 'cars.dat' is possibly corrupted. Please delete it and create a new empty data file named cars.dat");
+			System.out.println("El archivo de dato, 'cars.dat' esta posiblemente corrompido. Por favor eliminar y crear un nuevo archivo vacio llamado 'cars.dat'");
 			System.exit(0);
 		}
 		catch (Exception exp)
 		{
-			System.out.println("There was an error loading 'cars.dat'. Try deleting and creating a new empty file named 'cars.dat'");
+			System.out.println("Hubo un error cuando se estaba cargando 'cars.dat'. Probar eliminando y creando un nuevo archivo vacio llamado 'cars.dat'");
 			System.exit(0);
 		}
 
@@ -162,11 +162,11 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 		SearchByAgePanel searchByAgePanel = new SearchByAgePanel(this);
 		SearchByOtherPanel searchByOtherPanel = new SearchByOtherPanel(this);
 
-		theTab.add("Welcome", welcomePanel);
-		theTab.add("Add a Car", addCarPanel);
-		theTab.add("Show all makes and models", showAllCarsPanel);
-		theTab.add("Search on age", searchByAgePanel);
-		theTab.add("Search on Price and Distance traveled", searchByOtherPanel);
+		theTab.add("Bienvenido", welcomePanel);
+		theTab.add("Añadir un Auto", addCarPanel);
+		theTab.add("Mostrar todas las marcas y modelos", showAllCarsPanel);
+		theTab.add("Buscar por edad", searchByAgePanel);
+		theTab.add("Buscar por Precio y Distancia recorrida", searchByOtherPanel);
 
 		theTab.addChangeListener(showAllCarsPanel);
 		theTab.addChangeListener(welcomePanel);
@@ -186,7 +186,7 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 	{
 		// if it doesn't exist, create a new instance, otherwise display the current reference
 		if (aboutDlg == null)
-			aboutDlg = new AboutDialog(this, "About", true);
+			aboutDlg = new AboutDialog(this, "Sobre", true);
 		aboutDlg.showAbout();
 	}
 
@@ -243,7 +243,7 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 				}
 				catch (java.io.IOException exp)
 				{
-					int result = JOptionPane.showConfirmDialog(this, "The data file could not be written, possibly because you don't have access to this location.\nIf you chose No to retry you will lose all car data from this session.\n\nWould you like to reattempt saving the data file?", "Problem saving data", JOptionPane.YES_NO_OPTION);
+					int result = JOptionPane.showConfirmDialog(this, "El archivo de datos no se pudo escribir, posiblemente porque no tiene acceso a esta ubicación. \nSi selecciona No para volver a intentar, perderá todos los datos de esta sesión. \n\n ¿Desea volver a intentar guardar el archivo de datos", "Problema guardando datos", JOptionPane.YES_NO_OPTION);
 
 					// checks if user wants to reattempt saving the data file
 					if (result == JOptionPane.YES_OPTION)
@@ -464,11 +464,11 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 			}
 			catch (NoSuchMethodException exp)
 			{
-				System.out.println("Warning, 'public carsUpdated(CarEvent)' method does not exist in " + registeredListeners.get(i).getClass().getName() + ". You will not receive any car update events");
+				System.out.println("Advertencia, el metodo 'public carsUpdated(CarEvent)' no existe en " + registeredListeners.get(i).getClass().getName() + ". No recibirás ningún evento de actualización de auto");
 			}
 			catch (IllegalAccessException exp)
 			{
-				System.out.println("Warning, the 'public carUpdated(CarEvent)' method couldn't be called for unknown reasons, You will not receive any car update events");
+				System.out.println("Advertencia, el metodo 'public carUpdated(CarEvent)' no pudo ser llamado por alguna razon desconocida, No recibirás ningún evento de actualización de auto");
 			}
 			catch (Exception exp){}
 		}

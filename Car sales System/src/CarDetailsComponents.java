@@ -33,12 +33,12 @@ import javax.swing.*;
  */
 public class CarDetailsComponents extends JPanel implements ComponentListener
 {
-	private JLabel manufacturerLabel = new JLabel("Manufacturer");
-	private JLabel yearLabel = new JLabel("Year");
-	private JLabel modelLabel = new JLabel("Model");
-	private JLabel priceLabel = new JLabel("Price");
-	private JLabel kmLabel = new JLabel("Km Traveled");
-	private JLabel infoLabel = new JLabel("Extra Information");
+	private JLabel manufacturerLabel = new JLabel("Fabricante");
+	private JLabel yearLabel = new JLabel("Año");
+	private JLabel modelLabel = new JLabel("Modelo");
+	private JLabel priceLabel = new JLabel("Precio");
+	private JLabel kmLabel = new JLabel("Km Recorridos");
+	private JLabel infoLabel = new JLabel("Informacion Extra");
 	private JTextField manufacturerTextField = new JTextField();
 	private JTextField yearTextField = new JTextField();
 	private JTextField modelTextField = new JTextField();

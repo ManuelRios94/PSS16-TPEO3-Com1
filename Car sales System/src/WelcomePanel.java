@@ -24,7 +24,7 @@ import javax.swing.border.*;
 public class WelcomePanel extends JPanel implements ChangeListener
 {
 	private CarSalesSystem carSystem;
-	private JLabel headingLabel = new JLabel("Welcome to the Car Sales System", JLabel.CENTER);
+	private JLabel headingLabel = new JLabel("Bienvenido al Sistema de Venta de Autos", JLabel.CENTER);
 	private JLabel carsLabel = new JLabel();
 	private JLabel manufacturersLabel = new JLabel();
 	private JLabel avgPriceLabel = new JLabel();
@@ -122,12 +122,12 @@ public class WelcomePanel extends JPanel implements ChangeListener
 		java.io.File f = new java.io.File(file);
 		long size = f.length(); // get length of binary data file
 
-		carsLabel.setText("Total number of cars: " + String.valueOf(cars));
-		manufacturersLabel.setText("Total number of manufacturers: " + String.valueOf(manufacturers));
-		avgPriceLabel.setText("Average car price: " + String.valueOf(avgPrice));
-		avgKmLabel.setText("Average car kilometers: " + String.valueOf(avgKm));
-		avgAgeLabel.setText("Average car age: " + String.valueOf(avgAge));
-		versionLabel.setText("Car Sales System, Version " + CarSalesSystem.APP_VERSION);
-		dataSizeLabel.setText("Size of data file: " + size + " bytes");
+		carsLabel.setText("Total de numeros de autos: " + String.valueOf(cars));
+		manufacturersLabel.setText("Total de numeros de fabricantes: " + String.valueOf(manufacturers));
+		avgPriceLabel.setText("Precio promedio de auto: " + String.valueOf(avgPrice));
+		avgKmLabel.setText("Kilometros promedios de autos: " + String.valueOf(avgKm));
+		avgAgeLabel.setText("Edad promedio de auto: " + String.valueOf(avgAge));
+		versionLabel.setText("Sistema de Venta de Autos, Version " + CarSalesSystem.APP_VERSION);
+		dataSizeLabel.setText("Tamaño del archivo de dato: " + size + " bytes");
 	}
 }

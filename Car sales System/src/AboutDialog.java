@@ -43,7 +43,7 @@ public class AboutDialog extends JDialog implements ActionListener
 		c.setLayout(new GridLayout(3, 1));
 		setTitle(title);
 		buttonPanel.add(okButton);
-		c.add(new JLabel("Cars Sales System for TPEO 3 - PSS 2016", JLabel.CENTER));
+		c.add(new JLabel("Sistema de Venta de Autos Para TPEO 3 - PSS 2016", JLabel.CENTER));
 		c.add(new JLabel("Version 1.0", JLabel.CENTER));
 		c.add(buttonPanel);
 		okButton.addActionListener(this);
