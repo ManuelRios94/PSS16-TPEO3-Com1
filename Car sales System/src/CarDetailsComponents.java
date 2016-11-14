@@ -213,7 +213,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		manufacturerTextField.setText(c.getManufacturer());
 		yearTextField.setText(Integer.toString(c.getYear()));
 		modelTextField.setText(c.getModel());
-		priceTextField.setText(Integer.toString(c.getPrice()));
+		priceTextField.setText(Double.toString(c.getPrice()));
 		kmTextField.setText(Double.toString(c.getKilometers()));
 		infoTextArea.setText(c.getInformation());
 	}
