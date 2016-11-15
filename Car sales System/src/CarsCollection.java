@@ -353,7 +353,7 @@ public class CarsCollection
 	public Car[] search(int minPrice, int maxPrice, double minDistance, double maxDistance)
 	{
 		Vector result = new Vector();
-		int price;
+		double price;
 		double distance;
 		Car[] car;
 		car = getAllCars();

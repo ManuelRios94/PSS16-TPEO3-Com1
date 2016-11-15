@@ -35,7 +35,7 @@ public class Car implements java.io.Serializable
 	private String manufacturer;
 	private String information;
 	private int year;
-	private int price;
+	private double price; // <PSS-UNS> el precio era int.
 	private double kilometers;
 
 	public Car(){}
@@ -81,7 +81,7 @@ public class Car implements java.io.Serializable
 		return model;
 	}
 
-	public int getPrice()
+	public double getPrice()
 	{
 		return price;
 	}
