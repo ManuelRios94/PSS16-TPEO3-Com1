@@ -1,4 +1,7 @@
 import java.util.*;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 /**
  * Stores information about cars. Also calculates the cars age from the current date.
  * @
@@ -37,6 +40,10 @@ public class Car implements java.io.Serializable
 	private int year;
 	private double price; // <PSS-UNS> el precio era int.
 	private double kilometers;
+
+	private Icon imagen;
+	private String lastService;
+
 
 	public Car(){}
 
@@ -91,6 +98,20 @@ public class Car implements java.io.Serializable
 		return year;
 	}
 
+	public Icon getImagen(){
+		return imagen;
+	}
+	public String getLastService()
+	{
+		return lastService;
+	}
+
+	public void setLastService(String LastService)
+	{
+		lastService=LastService;
+	}
+
+
 	public void setInformation(String info)
 	{
 		information = info;
@@ -119,5 +140,9 @@ public class Car implements java.io.Serializable
 	public void setYear(int yr)
 	{
 		year = yr;
+	}
+
+	public void setImagen(Icon icono){
+		imagen = icono;
 	}
 }

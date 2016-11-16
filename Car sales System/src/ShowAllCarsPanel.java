@@ -26,9 +26,9 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 	private CarSalesSystem carSystem;
 	private Car[] carList;
 	private int currentIndex = 0;
-	private JLabel headingLabel = new JLabel("Show all makes and models");
-	private JButton previousButton = new JButton("Previous");
-	private JButton nextButton = new JButton("Next");
+	JLabel headingLabel = new JLabel("Mostrar todas las marcas y modelos");
+	JButton previousButton = new JButton("Anterior");
+	JButton nextButton = new JButton("Siguiente");
 	private JPanel buttonPanel = new JPanel();
 	private CarDetailsComponents carComponents = new CarDetailsComponents();
 	private boolean carsUpdated = false;
@@ -65,6 +65,10 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 		carList = carSystem.getAllCars();
 	}
 
+	public CarDetailsComponents getDetails(){
+		return carComponents;
+	}
+	
 	/**
 	 * check for button clicks
 	 *
@@ -131,7 +135,7 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 			carComponents.displayDetails(carList[currentIndex]);
 		}
 		else
-			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(carSystem, "No puede navegar mas", "Alerta", JOptionPane.ERROR_MESSAGE);
 	}
 
 	/**
@@ -145,6 +149,6 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 			carComponents.displayDetails(carList[currentIndex]);
 		}
 		else
-			JOptionPane.showMessageDialog(carSystem, "You can't navigate any further", "Alert", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(carSystem, "No puede navegar mas", "Alerta", JOptionPane.ERROR_MESSAGE);
 	}
 }
