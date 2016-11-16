@@ -39,23 +39,34 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class CarDetailsComponents extends JPanel implements ComponentListener
 {
+
 	private JLabel manufacturerLabel = new JLabel("Fabricante");
-	private JLabel yearLabel = new JLabel("Año");
+	private JLabel yearLabel = new JLabel("Aï¿½o");
 	private JLabel modelLabel = new JLabel("Modelo");
 	private JLabel priceLabel = new JLabel("Precio");
 	private JLabel kmLabel = new JLabel("Km Recorridos");
 	private JLabel infoLabel = new JLabel("Informacion Extra");
-	
-	private JLabel imagenLabel = new JLabel("Imagen del Vehículo");
+
+	private JLabel imagenLabel = new JLabel("Imagen del Vehï¿½culo");
 	private JLabel imagenMostradaLabel = new JLabel("");
-	
+
+/*
+	private JLabel manufacturerLabel = new JLabel("Manufacturer");
+	private JLabel yearLabel = new JLabel("Year");
+	private JLabel modelLabel = new JLabel("Model");
+	private JLabel priceLabel = new JLabel("Price");
+	private JLabel kmLabel = new JLabel("Km Traveled");
+	private JLabel infoLabel = new JLabel("Extra Information");
+	private JLabel lastServiceLabel = new JLabel("Date of Last Service");
+*/
 	private JTextField manufacturerTextField = new JTextField();
 	private JTextField yearTextField = new JTextField();
 	private JTextField modelTextField = new JTextField();
 	private JTextField priceTextField = new JTextField();
 	private JTextField kmTextField = new JTextField();
+	private JTextField lastServiceTextField = new JTextField();
 	private JTextArea infoTextArea = new JTextArea(4, 0);
-	
+
 	private JButton imagenButton = new JButton("Subir Imagen");
 
 	private final int divFactor = 27;
@@ -118,15 +129,18 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
         gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.insets = currentInsets;
         compPanel.add(infoLabel, gridBagConstraints);
-        
+
         imagenLabel.setFont(new Font(currentFont, Font.BOLD, 12));
+        lastServiceLabel.setFont(new Font(currentFont, Font.BOLD, 12));
+
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.insets = currentInsets;
+
         compPanel.add(imagenLabel, gridBagConstraints);
-        
+
         imagenMostradaLabel.setFont(new Font(currentFont, Font.BOLD, 12));
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -134,6 +148,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
         gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.insets = currentInsets;
         compPanel.add(imagenMostradaLabel, gridBagConstraints);
+        compPanel.add(lastServiceLabel, gridBagConstraints);
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridwidth = GridBagConstraints.RELATIVE;
@@ -181,7 +196,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
         gridBagConstraints.anchor = gridBagConstraints.WEST;
 		gridBagConstraints.weightx = 1.0;
         compPanel.add(new JScrollPane(infoTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), gridBagConstraints);
-        
+
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -189,7 +204,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		gridBagConstraints.anchor = gridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         compPanel.add(imagenButton, gridBagConstraints);
-        
+
         imagenButton.addActionListener(new ActionListener()
         {
         public void actionPerformed(ActionEvent e)
@@ -207,13 +222,15 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
                 {
                         ImageIcon imagen = new ImageIcon(ruta);
                         imagenMostradaLabel.setIcon(imagen);
-               
+
                 }
 }
 });
-        		
-        
-        
+
+
+		compPanel.add(lastServiceTextField, gridBagConstraints);
+
+
 		// this listens for resize events
 		addComponentListener(this);
         add(compPanel, "North");
@@ -232,6 +249,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		infoTextArea.setText("");
 		imagenMostradaLabel.setIcon(null);
 
+		lastServiceTextField.setText("");
 	}
 
 	public void componentHidden(ComponentEvent ev) {}
@@ -258,6 +276,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 				modelTextField.setColumns(width / divFactor);
 				priceTextField.setColumns(width / divFactor);
 				kmTextField.setColumns(width / divFactor);
+				lastServiceTextField.setColumns( width / divFactor);
 				infoTextArea.setColumns((width / divFactor) + 3); // this text box is larger
 			}
 		}
@@ -279,6 +298,7 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 		kmTextField.setText(Double.toString(c.getKilometers()));
 		infoTextArea.setText(c.getInformation());
 		imagenMostradaLabel.setIcon(c.getImagen());
+		lastServiceTextField.setText(c.getLastService());
 	}
 
 	public String getInfoText()
@@ -310,13 +330,16 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 	{
 		return yearTextField.getText();
 	}
-	
+
 	public Icon getImagen()
 	{
 		return imagenMostradaLabel.getIcon();
 	}
-	
 
+	public String getLastServiceText()
+	{
+		return lastServiceTextField.getText();
+	}
 	/**
 	 * set focus to the manufacturer text field. ie, put the cursor inside it
 	 */
@@ -324,6 +347,6 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 	{
 		manufacturerTextField.grabFocus();
 	}
-	
-	
+
+
 }

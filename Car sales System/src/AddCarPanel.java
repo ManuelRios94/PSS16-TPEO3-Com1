@@ -22,7 +22,7 @@ import javax.swing.*;
 public class AddCarPanel extends JPanel implements ActionListener
 {
 	private CarSalesSystem carSystem;
-	private JLabel headingLabel = new JLabel("Añadir Auto");
+	private JLabel headingLabel = new JLabel("Aï¿½adir Auto");
 	private JButton resetButton = new JButton("Resetear");
 	private JButton saveButton = new JButton("Guardar");
 	private JPanel buttonPanel = new JPanel();
@@ -78,6 +78,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 		double kilometers = 0;
 		int price = 0;
 		int year = 0;
+		String lastService = "";
 		boolean valid = false;
 		Icon imagen = null;
 		try
@@ -91,6 +92,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			price = Integer.parseInt(carComponents.getPriceText().trim());
 			year = Integer.parseInt(carComponents.getYearText().trim());
 			imagen = carComponents.getImagen();
+			lastService = carComponents.getLastServiceText();
 
 			// begin validation process
 			if (validateString(manufacturer))
@@ -104,16 +106,16 @@ public class AddCarPanel extends JPanel implements ActionListener
 							valid = true;
 						}
 						else
-							JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la información del campo \"Km Traveled\" de texto.\nEste campo de texto debe contener un numeror con un decimal solamente.", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la informaciï¿½n del campo \"Km Traveled\" de texto.\nEste campo de texto debe contener un numeror con un decimal solamente.", "Campo Invï¿½lido", JOptionPane.ERROR_MESSAGE);
 					}
 					else
-						JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la información del campo \"Modelo\" de texto.\nEste campo de texto debe contener cualquier cadena de al menos 2 caracteres no espaciados.", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la informaciï¿½n del campo \"Modelo\" de texto.\nEste campo de texto debe contener cualquier cadena de al menos 2 caracteres no espaciados.", "Campo Invï¿½lido", JOptionPane.ERROR_MESSAGE);
 				}
 				else
-					JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la información del campo \"Año\" de texto.\nEste campo de texto debe ser de la forma, YYYY. ie, 2007.", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la informaciï¿½n del campo \"Aï¿½o\" de texto.\nEste campo de texto debe ser de la forma, YYYY. ie, 2007.", "Campo Invï¿½lido", JOptionPane.ERROR_MESSAGE);
 			}
 			else
-				JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la información del campo \"Fabricante\" de texto.\nEste campo de texto debe contener cualquier cadena de al menos 2 caracteres no espaciados.", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(carSystem, "Se a producido un error debido a la informaciï¿½n del campo \"Fabricante\" de texto.\nEste campo de texto debe contener cualquier cadena de al menos 2 caracteres no espaciados.", "Campo Invï¿½lido", JOptionPane.ERROR_MESSAGE);
 
 		}
 		/* NumberFormatException would usually be thrown if the text fields contain invalid data,
@@ -121,7 +123,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 		catch (NumberFormatException exp)
 		{
 			JOptionPane.showMessageDialog(carSystem, "Un error desconocido ha ocurrido. Por favor aseguro que sus campos siguen los requerimientos:\n" +
-			"El campo\"Año\" debe contener solamente 4 digitos numericos\nEl campo\"Precio\" debe contener un entero válido sin decimales\nEl campo \"Km Traveled\" debe contener un numero que pueda tener un máximo de un decimal", "Campo inválido", JOptionPane.ERROR_MESSAGE);
+			"El campo\"Aï¿½o\" debe contener solamente 4 digitos numericos\nEl campo\"Precio\" debe contener un entero vï¿½lido sin decimales\nEl campo \"Km Traveled\" debe contener un numero que pueda tener un mï¿½ximo de un decimal", "Campo invï¿½lido", JOptionPane.ERROR_MESSAGE);
 		}
 
 		if (valid)
@@ -132,6 +134,7 @@ public class AddCarPanel extends JPanel implements ActionListener
 			myCar.setPrice(price);
 			myCar.setYear(year);
 			myCar.setImagen(imagen);
+			myCar.setLastService(lastService);
 
 			// attempt to add the new car to the system.
 			int result = carSystem.addNewCar(myCar);
@@ -146,10 +149,10 @@ public class AddCarPanel extends JPanel implements ActionListener
 			}
 			// for that manufacturer, the limit has been reached
 			else if (result == CarsCollection.CARS_MAXIMUM_REACHED)
-				JOptionPane.showMessageDialog(carSystem, "El numero maximo de autos para ese fabricante ha sido alcanzado.\nDesafortunadamente no podes agregar mas autos a ese fabricante", "Problema añadiendo auto", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(carSystem, "El numero maximo de autos para ese fabricante ha sido alcanzado.\nDesafortunadamente no podes agregar mas autos a ese fabricante", "Problema aï¿½adiendo auto", JOptionPane.WARNING_MESSAGE);
 			// the car system has reached the maximum number of manufacturers allowed
 			else if (result == CarsCollection.MANUFACTURERS_MAXIMUM_REACHED)
-				JOptionPane.showMessageDialog(carSystem, "El numero maximo de fabricantes en el sistema ha sido alcanzado.\nDesafortunadamente no podes agregar mas fabricantes al sistema", "Problema añadiendo autor", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(carSystem, "El numero maximo de fabricantes en el sistema ha sido alcanzado.\nDesafortunadamente no podes agregar mas fabricantes al sistema", "Problema aï¿½adiendo autor", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 

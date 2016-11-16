@@ -40,8 +40,10 @@ public class Car implements java.io.Serializable
 	private int year;
 	private int price;
 	private double kilometers;
-	
+
 	private Icon imagen;
+	private String lastService;
+
 
 	public Car(){}
 
@@ -95,10 +97,20 @@ public class Car implements java.io.Serializable
 	{
 		return year;
 	}
-	
+
 	public Icon getImagen(){
 		return imagen;
 	}
+	public String getLastService()
+	{
+		return lastService;
+	}
+
+	public void setLastService(String LastService)
+	{
+		lastService=LastService;
+	}
+
 
 	public void setInformation(String info)
 	{
@@ -129,7 +141,7 @@ public class Car implements java.io.Serializable
 	{
 		year = yr;
 	}
-	
+
 	public void setImagen(Icon icono){
 		imagen = icono;
 	}
