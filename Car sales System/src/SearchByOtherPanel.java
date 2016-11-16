@@ -20,7 +20,7 @@ import javax.swing.*;
  */
 public class SearchByOtherPanel extends JPanel implements ActionListener
 {
-	private final String[] price = {"5001-10000", "10001-15000", "15001-20000", "20001+"};// <PSS-UNS> borré algunos rangos de precios porque me parecieron muchos.
+	private final String[] price = {"5001-10000", "10001-15000", "15001-20000", "20001+"};// <PSS-UNS> borre algunos rangos de precios porque me parecieron muchos.
 	private final String[] distance = {"0", "1-10000", "10001-20000", "20001-30000", "30001-40000",
 		"40001-50000", "50001-80000", "80001-100000", "100001-200000", "200001-300000", "300001+"};
 	private Car[] carList;
@@ -83,7 +83,7 @@ public class SearchByOtherPanel extends JPanel implements ActionListener
 		add(topPanel, "North");
 		add(carComponents, "Center");
 	}
-	
+
 	public CarDetailsComponents getDetails(){
 		return carComponents;
 	}
