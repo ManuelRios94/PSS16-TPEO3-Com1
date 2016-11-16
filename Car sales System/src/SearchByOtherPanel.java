@@ -27,11 +27,11 @@ public class SearchByOtherPanel extends JPanel implements ActionListener
 	private Car[] carList;
 	private CarSalesSystem carSystem;
 	private int currentIndex = 0;
-	private JLabel headingLabel = new JLabel("Buscar por Precio y Distancia Recorrida");
-	private JLabel priceLabel = new JLabel("Precio");
-	private JLabel distanceLabel = new JLabel("Distancia Recorrida");
-	private JButton searchButton = new JButton("Buscar");
-	private JButton resetButton = new JButton("Resetear");
+	JLabel headingLabel = new JLabel("Buscar por Precio y Distancia Recorrida");
+	JLabel priceLabel = new JLabel("Precio");
+	JLabel distanceLabel = new JLabel("Distancia Recorrida");
+	JButton searchButton = new JButton("Buscar");
+	JButton resetButton = new JButton("Resetear");
 	private JButton previousButton = new JButton("Anterior");
 	private JButton nextButton = new JButton("Siguiente");
 	private JComboBox priceCombo = new JComboBox(price);
@@ -83,6 +83,10 @@ public class SearchByOtherPanel extends JPanel implements ActionListener
 
 		add(topPanel, "North");
 		add(carComponents, "Center");
+	}
+	
+	public CarDetailsComponents getDetails(){
+		return carComponents;
 	}
 
 	/**

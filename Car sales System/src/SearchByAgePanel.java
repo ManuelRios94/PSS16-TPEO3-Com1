@@ -25,12 +25,12 @@ public class SearchByAgePanel extends JPanel implements ActionListener
 	private Car[] carList;
 	private CarSalesSystem carSystem;
 	private int currentIndex = 0;
-	private JLabel headingLabel = new JLabel("Bsucar por edad");
-	private JLabel ageLabel = new JLabel("Edad de Auto");
-	private JButton searchButton = new JButton("Buscar");
-	private JButton resetButton = new JButton("Resetear");
-	private JButton previousButton = new JButton("Anterior");
-	private JButton nextButton = new JButton("Siguiente");
+	JLabel headingLabel = new JLabel("Bsucar por edad");
+	JLabel ageLabel = new JLabel("Edad de Auto");
+	JButton searchButton = new JButton("Buscar");
+	JButton resetButton = new JButton("Resetear");
+	JButton previousButton = new JButton("Anterior");
+	JButton nextButton = new JButton("Siguiente");
 	private JComboBox ageCombo = new JComboBox(age);
 	private JPanel topPanel = new JPanel();
 	private JPanel agePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -75,6 +75,10 @@ public class SearchByAgePanel extends JPanel implements ActionListener
 
 		add(topPanel, "North");
 		add(carComponents, "Center");
+	}
+	
+	public CarDetailsComponents getDetails(){
+		return carComponents;
 	}
 
 	/**

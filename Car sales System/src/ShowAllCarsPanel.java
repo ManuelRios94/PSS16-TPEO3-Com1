@@ -26,9 +26,9 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 	private CarSalesSystem carSystem;
 	private Car[] carList;
 	private int currentIndex = 0;
-	private JLabel headingLabel = new JLabel("Mostrar todas las marcas y modelos");
-	private JButton previousButton = new JButton("Anterior");
-	private JButton nextButton = new JButton("Siguiente");
+	JLabel headingLabel = new JLabel("Mostrar todas las marcas y modelos");
+	JButton previousButton = new JButton("Anterior");
+	JButton nextButton = new JButton("Siguiente");
 	private JPanel buttonPanel = new JPanel();
 	private CarDetailsComponents carComponents = new CarDetailsComponents();
 	private boolean carsUpdated = false;
@@ -65,6 +65,10 @@ public class ShowAllCarsPanel extends JPanel implements ActionListener, ChangeLi
 		carList = carSystem.getAllCars();
 	}
 
+	public CarDetailsComponents getDetails(){
+		return carComponents;
+	}
+	
 	/**
 	 * check for button clicks
 	 *

@@ -24,14 +24,14 @@ import javax.swing.border.*;
 public class WelcomePanel extends JPanel implements ChangeListener
 {
 	private CarSalesSystem carSystem;
-	private JLabel headingLabel = new JLabel("Bienvenido al Sistema de Venta de Autos", JLabel.CENTER);
-	private JLabel carsLabel = new JLabel();
-	private JLabel manufacturersLabel = new JLabel();
-	private JLabel avgPriceLabel = new JLabel();
-	private JLabel avgKmLabel = new JLabel();
-	private JLabel avgAgeLabel = new JLabel();
-	private JLabel versionLabel = new JLabel();
-	private JLabel dataSizeLabel = new JLabel();
+	JLabel headingLabel = new JLabel("Bienvenido al Sistema de Venta de Autos", JLabel.CENTER);
+	JLabel carsLabel = new JLabel();
+	JLabel avgPriceLabel = new JLabel();
+	JLabel avgKmLabel = new JLabel();
+	JLabel avgAgeLabel = new JLabel();
+	JLabel versionLabel = new JLabel();
+	JLabel dataSizeLabel = new JLabel();
+	public JLabel manufacturersLabel = new JLabel();
 	private JPanel statsPanel = new JPanel();
 	private JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
 	private boolean carsUpdated = false;
@@ -111,6 +111,8 @@ public class WelcomePanel extends JPanel implements ChangeListener
 	/**
 	 * update all the statistics
 	 */
+	
+	
 	private void updateStats()
 	{
 		// receive new statistics
@@ -128,6 +130,6 @@ public class WelcomePanel extends JPanel implements ChangeListener
 		avgKmLabel.setText("Kilometros promedios de autos: " + String.valueOf(avgKm));
 		avgAgeLabel.setText("Edad promedio de auto: " + String.valueOf(avgAge));
 		versionLabel.setText("Sistema de Venta de Autos, Version " + CarSalesSystem.APP_VERSION);
-		dataSizeLabel.setText("Tamaño del archivo de dato: " + size + " bytes");
+		dataSizeLabel.setText("Tamano del archivo de dato: " + size + " bytes");
 	}
 }

@@ -40,14 +40,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class CarDetailsComponents extends JPanel implements ComponentListener
 {
 
-	private JLabel manufacturerLabel = new JLabel("Fabricante");
-	private JLabel yearLabel = new JLabel("A�o");
-	private JLabel modelLabel = new JLabel("Modelo");
-	private JLabel priceLabel = new JLabel("Precio");
-	private JLabel kmLabel = new JLabel("Km Recorridos");
-	private JLabel infoLabel = new JLabel("Informacion Extra");
+	JLabel manufacturerLabel = new JLabel("Fabricante");
+	JLabel yearLabel = new JLabel("Ano");
+	JLabel modelLabel = new JLabel("Modelo");
+	JLabel priceLabel = new JLabel("Precio");
+	JLabel kmLabel = new JLabel("Km Recorridos");
+	JLabel infoLabel = new JLabel("Informacion Extra");
 
-	private JLabel imagenLabel = new JLabel("Imagen del Veh�culo");
+	JLabel imagenLabel = new JLabel("Imagen del Vehiculo");
 	private JLabel imagenMostradaLabel = new JLabel("");
 
 /*
@@ -57,8 +57,9 @@ public class CarDetailsComponents extends JPanel implements ComponentListener
 	private JLabel priceLabel = new JLabel("Price");
 	private JLabel kmLabel = new JLabel("Km Traveled");
 	private JLabel infoLabel = new JLabel("Extra Information");
+	*/
 	private JLabel lastServiceLabel = new JLabel("Date of Last Service");
-*/
+
 	private JTextField manufacturerTextField = new JTextField();
 	private JTextField yearTextField = new JTextField();
 	private JTextField modelTextField = new JTextField();

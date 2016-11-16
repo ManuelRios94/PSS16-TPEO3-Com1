@@ -22,9 +22,9 @@ import javax.swing.*;
 public class AddCarPanel extends JPanel implements ActionListener
 {
 	private CarSalesSystem carSystem;
-	private JLabel headingLabel = new JLabel("A�adir Auto");
-	private JButton resetButton = new JButton("Resetear");
-	private JButton saveButton = new JButton("Guardar");
+	JLabel headingLabel = new JLabel("Anadir Auto");
+	JButton resetButton = new JButton("Resetear");
+	JButton saveButton = new JButton("Guardar");
 	private JPanel buttonPanel = new JPanel();
 	private CarDetailsComponents carComponents = new CarDetailsComponents();
 
@@ -52,6 +52,11 @@ public class AddCarPanel extends JPanel implements ActionListener
 		add(carComponents);
 	}
 
+	
+	public CarDetailsComponents getDetails(){
+		return carComponents;
+	}
+	
 	/**
 	 * check which buttons were pressed
 	 *

@@ -83,7 +83,7 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 	private JPanel titlePanel = new JPanel(new GridLayout(2, 1));
 	private JLabel statusLabel = new JLabel();
 	private JLabel pictureLabel = new JLabel();
-	private JLabel carCoLabel = new JLabel("Mi Compañia de Autos", JLabel.CENTER);
+	private JLabel carCoLabel = new JLabel("Mi Compania de Autos", JLabel.CENTER);
 	private JLabel salesSysLabel = new JLabel("Sistema de Venta de Autos", JLabel.CENTER);
 	private JTabbedPane theTab = new JTabbedPane(JTabbedPane.LEFT);
 	private JMenuBar menuBar = new JMenuBar();
@@ -91,6 +91,16 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 	private JMenuItem aboutItem = new JMenuItem("Sobre");
 	private JMenuItem exitItem = new JMenuItem("Salida");
 	private WindowCloser closer = new WindowCloser();
+	private final JMenu language = new JMenu("Idioma");
+	private final JMenuItem idioEsp = new JMenuItem("Espanol");
+	private final JMenuItem idioEng = new JMenuItem("English");
+	private WelcomePanel welcomePanel;
+	private AddCarPanel addCarPanel;
+	private ShowAllCarsPanel showAllCarsPanel;
+	private SearchByAgePanel searchByAgePanel;
+	private SearchByOtherPanel searchByOtherPanel;
+	private CarDetailsComponents carDetailsPanel;
+	
 
 	/**
 	 * @param f existing binary file for storing/retrieving car data
@@ -142,9 +152,17 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 		fileMenu.add(exitItem);
 		aboutItem.addActionListener(this);
 		exitItem.addActionListener(this);
+		idioEsp.addActionListener(this);
+		idioEng.addActionListener(this);
 
 		// add menu bar
 		setJMenuBar(menuBar);
+		
+		menuBar.add(language);
+		
+		language.add(idioEsp);
+		
+		language.add(idioEng);
 
 		// set border on status bar label to make it look like a panel
 		statusLabel.setBorder(new javax.swing.border.EtchedBorder());
@@ -156,14 +174,14 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 		topPanel.add(pictureLabel, "West");
 		topPanel.add(titlePanel, "Center");
 
-		WelcomePanel welcomePanel = new WelcomePanel(this, f);
-		AddCarPanel addCarPanel = new AddCarPanel(this);
-		ShowAllCarsPanel showAllCarsPanel = new ShowAllCarsPanel(this);
-		SearchByAgePanel searchByAgePanel = new SearchByAgePanel(this);
-		SearchByOtherPanel searchByOtherPanel = new SearchByOtherPanel(this);
+		welcomePanel = new WelcomePanel(this, f);
+		addCarPanel = new AddCarPanel(this);
+		showAllCarsPanel = new ShowAllCarsPanel(this);
+		searchByAgePanel = new SearchByAgePanel(this);
+		searchByOtherPanel = new SearchByOtherPanel(this);
 
 		theTab.add("Bienvenido", welcomePanel);
-		theTab.add("Añadir un Auto", addCarPanel);
+		theTab.add("Anadir un Auto", addCarPanel);
 		theTab.add("Mostrar todas las marcas y modelos", showAllCarsPanel);
 		theTab.add("Buscar por edad", searchByAgePanel);
 		theTab.add("Buscar por Precio y Distancia recorrida", searchByOtherPanel);
@@ -189,17 +207,182 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 			aboutDlg = new AboutDialog(this, "Sobre", true);
 		aboutDlg.showAbout();
 	}
+	
+	//----------------------------
+	private void spanish()
+	{
+		language.setText("Idioma");
+		carCoLabel.setText("Mi compania de autos");
+		salesSysLabel.setText("Sistema de venta de autos");
+		fileMenu.setText("Archivo");
+		aboutItem.setText("Sobre");
+		exitItem.setText("Salir");
+		
+		welcomePanel.carsLabel.setText("Total numero de autos: <dynamic>");
+		//welcomePanel.manufacturersLabel.setText("Total de numeros de fabricantes");
+		welcomePanel.avgPriceLabel.setText("Precio promedio de auto");
+		welcomePanel.avgKmLabel.setText("Kilometros promedio de auto");
+		welcomePanel.avgAgeLabel.setText("Edad promedio de auto");
+		welcomePanel.versionLabel.setText("Sistema de venta de autos, version: 3.0");
+		welcomePanel.dataSizeLabel.setText("Tamano del archivo de datos");
+		welcomePanel.headingLabel.setText("Bienvenido al Sistema de venta de autos");
+		
+		addCarPanel.headingLabel.setText("Anadir Auto");
+		addCarPanel.resetButton.setText("Resetear");
+		addCarPanel.saveButton.setText("Guardar");
+		
+		showAllCarsPanel.headingLabel.setText("Mostrar todas las marcas y modelos");
+		showAllCarsPanel.previousButton.setText("Anterior");
+		showAllCarsPanel.nextButton.setText("Siguiente");
+		
+		searchByAgePanel.headingLabel.setText("Buscar por edad");
+		searchByAgePanel.ageLabel.setText("Edad del auto");
+		searchByAgePanel.searchButton.setText("Buscar");
+		searchByAgePanel.resetButton.setText("Resetear");
+		
+		searchByOtherPanel.headingLabel.setText("Buscar por recio y distancia recorrida");
+		searchByOtherPanel.distanceLabel.setText("Distancia");
+		searchByOtherPanel.priceLabel.setText("Precio");
+		searchByOtherPanel.searchButton.setText("Buscar");
+		searchByOtherPanel.resetButton.setText("Resetear");
+		
+		detallesEsp();
+		
+	}
+	
+	private void detallesEsp(){
+		carDetailsPanel = addCarPanel.getDetails();
+		carDetailsPanel.manufacturerLabel.setText("Fabricante");
+		carDetailsPanel.yearLabel.setText("Ano");
+		carDetailsPanel.modelLabel.setText("Modelo");
+		carDetailsPanel.priceLabel.setText("Precio");
+		carDetailsPanel.kmLabel.setText("Km Recorridos");
+		carDetailsPanel.infoLabel.setText("Infooooooooooo");
+		carDetailsPanel.imagenLabel.setText("Imagen del Vehiculo");
+		
+		carDetailsPanel = showAllCarsPanel.getDetails();
+		carDetailsPanel.manufacturerLabel.setText("Fabricante");
+		carDetailsPanel.yearLabel.setText("Ano");
+		carDetailsPanel.modelLabel.setText("Modelo");
+		carDetailsPanel.priceLabel.setText("Precio");
+		carDetailsPanel.kmLabel.setText("Km Recorridos");
+		carDetailsPanel.infoLabel.setText("Infooooooooooo");
+		carDetailsPanel.imagenLabel.setText("Imagen del Vehiculo");
+		
+		carDetailsPanel = searchByAgePanel.getDetails();
+		carDetailsPanel.manufacturerLabel.setText("Fabricante");
+		carDetailsPanel.yearLabel.setText("Ano");
+		carDetailsPanel.modelLabel.setText("Modelo");
+		carDetailsPanel.priceLabel.setText("Precio");
+		carDetailsPanel.kmLabel.setText("Km Recorridos");
+		carDetailsPanel.infoLabel.setText("Infooooooooooo");
+		carDetailsPanel.imagenLabel.setText("Imagen del Vehiculo");
+		
+		carDetailsPanel = searchByOtherPanel.getDetails();
+		carDetailsPanel.manufacturerLabel.setText("Fabricante");
+		carDetailsPanel.yearLabel.setText("Ano");
+		carDetailsPanel.modelLabel.setText("Modelo");
+		carDetailsPanel.priceLabel.setText("Precio");
+		carDetailsPanel.kmLabel.setText("Km Recorridos");
+		carDetailsPanel.infoLabel.setText("Infooooooooooo");
+		carDetailsPanel.imagenLabel.setText("Imagen del Vehiculo");
+	}
+	
+	private void english()
+	{
+	
+	language.setText("Language");	
+	carCoLabel.setText("My car company");
+	salesSysLabel.setText("Car sales System");
+	fileMenu.setText("File");
+	aboutItem.setText("About");
+	exitItem.setText("Exit");
+	
+	welcomePanel.carsLabel.setText("Total number of cars: <dynamic>");
+	//welcomePanel.manufacturersLabel.setText("Total de numeros de fabricantes");
+	welcomePanel.avgPriceLabel.setText("Average car price");
+	welcomePanel.avgKmLabel.setText("Average car kilometers");
+	welcomePanel.avgAgeLabel.setText("Average car age");
+	welcomePanel.versionLabel.setText("Car sales system, version 3.0");
+	welcomePanel.dataSizeLabel.setText("DAT file size");
+	welcomePanel.headingLabel.setText("Welcome to the Car Sales System");
+	
+	addCarPanel.headingLabel.setText("Add Car");
+	addCarPanel.resetButton.setText("Reset");
+	addCarPanel.saveButton.setText("Save");
+	
+	showAllCarsPanel.headingLabel.setText("Show all brands and models");
+	showAllCarsPanel.previousButton.setText("Back");
+	showAllCarsPanel.nextButton.setText("Next");
+	
+	searchByAgePanel.headingLabel.setText("Search By Age");
+	searchByAgePanel.ageLabel.setText("Car Age");
+	searchByAgePanel.searchButton.setText("Find");
+	searchByAgePanel.resetButton.setText("Reset");
+	
+	searchByOtherPanel.headingLabel.setText("Search by price and distance");
+	searchByOtherPanel.distanceLabel.setText("Distance");
+	searchByOtherPanel.priceLabel.setText("Price");
+	searchByOtherPanel.searchButton.setText("Find");
+	searchByOtherPanel.resetButton.setText("Reset");
+	
+	detallesEng();
+	
+}
 
+private void detallesEng(){
+	carDetailsPanel = addCarPanel.getDetails();
+	carDetailsPanel.manufacturerLabel.setText("Manufacturer");
+	carDetailsPanel.yearLabel.setText("Year");
+	carDetailsPanel.modelLabel.setText("Model");
+	carDetailsPanel.priceLabel.setText("Price");
+	carDetailsPanel.kmLabel.setText("Km");
+	carDetailsPanel.infoLabel.setText("Extra Info");
+	carDetailsPanel.imagenLabel.setText("Car Image");
+	
+	carDetailsPanel = showAllCarsPanel.getDetails();
+	carDetailsPanel.manufacturerLabel.setText("Manufacturer");
+	carDetailsPanel.yearLabel.setText("Year");
+	carDetailsPanel.modelLabel.setText("Model");
+	carDetailsPanel.priceLabel.setText("Price");
+	carDetailsPanel.kmLabel.setText("Km");
+	carDetailsPanel.infoLabel.setText("Extra Info");
+	carDetailsPanel.imagenLabel.setText("Car Image");
+	
+	carDetailsPanel = searchByAgePanel.getDetails();
+	carDetailsPanel.manufacturerLabel.setText("Manufacturer");
+	carDetailsPanel.yearLabel.setText("Year");
+	carDetailsPanel.modelLabel.setText("Model");
+	carDetailsPanel.priceLabel.setText("Price");
+	carDetailsPanel.kmLabel.setText("Km");
+	carDetailsPanel.infoLabel.setText("Extra Info");
+	carDetailsPanel.imagenLabel.setText("Car Image");
+	
+	carDetailsPanel = searchByOtherPanel.getDetails();
+	carDetailsPanel.manufacturerLabel.setText("Manufacturer");
+	carDetailsPanel.yearLabel.setText("Year");
+	carDetailsPanel.modelLabel.setText("Model");
+	carDetailsPanel.priceLabel.setText("Price");
+	carDetailsPanel.kmLabel.setText("Km");
+	carDetailsPanel.infoLabel.setText("Extra Info");
+	carDetailsPanel.imagenLabel.setText("Car Image");
+}
 	/**
 	 * receives and handles menu click events
 	 *
 	 * @param ev ActionEvent object
 	 */
+	
+	//--------------------------------------------------
 	public void actionPerformed(ActionEvent ev)
 	{
+		if (ev.getSource() == idioEsp)
+			spanish();
+		if (ev.getSource() == idioEng)
+			english();
 		if (ev.getSource() == aboutItem)
 			aboutMenuItemClicked();
-		else if (ev.getSource() == exitItem)
+		if (ev.getSource() == exitItem)
 			closing();
 	}
 
@@ -243,7 +426,7 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 				}
 				catch (java.io.IOException exp)
 				{
-					int result = JOptionPane.showConfirmDialog(this, "El archivo de datos no se pudo escribir, posiblemente porque no tiene acceso a esta ubicación. \nSi selecciona No para volver a intentar, perderá todos los datos de esta sesión. \n\n ¿Desea volver a intentar guardar el archivo de datos", "Problema guardando datos", JOptionPane.YES_NO_OPTION);
+					int result = JOptionPane.showConfirmDialog(this, "El archivo de datos no se pudo escribir, posiblemente porque no tiene acceso a esta ubicacion. \nSi selecciona No para volver a intentar, perder todos los datos de esta sesion. \n\n Desea volver a intentar guardar el archivo de datos", "Problema guardando datos", JOptionPane.YES_NO_OPTION);
 
 					// checks if user wants to reattempt saving the data file
 					if (result == JOptionPane.YES_OPTION)
@@ -464,11 +647,11 @@ public class CarSalesSystem extends JFrame implements ActionListener, ComponentL
 			}
 			catch (NoSuchMethodException exp)
 			{
-				System.out.println("Advertencia, el metodo 'public carsUpdated(CarEvent)' no existe en " + registeredListeners.get(i).getClass().getName() + ". No recibirás ningún evento de actualización de auto");
+				System.out.println("Advertencia, el metodo 'public carsUpdated(CarEvent)' no existe en " + registeredListeners.get(i).getClass().getName() + ". No recibirs ningun evento de actualizacin de auto");
 			}
 			catch (IllegalAccessException exp)
 			{
-				System.out.println("Advertencia, el metodo 'public carUpdated(CarEvent)' no pudo ser llamado por alguna razon desconocida, No recibirás ningún evento de actualización de auto");
+				System.out.println("Advertencia, el metodo 'public carUpdated(CarEvent)' no pudo ser llamado por alguna razon desconocida, No recibirs ningun evento de actualizacion de auto");
 			}
 			catch (Exception exp){}
 		}
